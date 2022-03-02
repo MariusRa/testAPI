@@ -9,6 +9,6 @@ namespace LLMS.Models
     {
         public int Id { get; set; }
         public string Semester { get; set; }
-        public List<Request> RequestSemester { get; set; }
+        //public List<Request> RequestSemester { get; set; }
     }
 }

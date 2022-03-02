@@ -1,8 +1,8 @@
-﻿
+﻿using LLMS.Models;
 
-namespace LLMS.Models
+namespace LLMS.viewModels
 {
-    public class Request
+    public class RequestViewModel
     {
         public int RequestId { get; set; }
         public User Requestor { get; set; }
@@ -14,7 +14,6 @@ namespace LLMS.Models
         public string Semester { get; set; }
         public string CostCenter { get; set; }
         public string Comments { get; set; }
-        
         public string Approval { get; set; }
     }
 }

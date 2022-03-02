@@ -10,6 +10,6 @@ namespace LLMS.Models
         public int Id { get; set; }
         public string Target { get; set; }
 
-        public List<Request> RequestTarget { get; set; }
+        //public List<Request> RequestTarget { get; set; }
     }
 }

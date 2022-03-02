@@ -24,7 +24,7 @@ namespace LLMS.Controllers
         [Authorize(Roles = "Coordinator, Teacher")]
         public IEnumerable<WeatherForecast> Get()
         {
-            //var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId = User.FindFirst("oid")?.Value;
             //var userEmail = User.FindFirst("preferred_username")?.Value;
             //var userName = User.FindFirst("name")?.Value;
 

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using LLMS.DAL;
 using Microsoft.AspNetCore.Authentication.AzureAD;
 using LLMS.Services;
+using System.Text.Json.Serialization;
 
 namespace LLMS
 {
@@ -26,6 +27,9 @@ namespace LLMS
         {
             services.AddDbContext<ApplicationDbContext>();
             services.AddTransient<IRequestService, RequestService>();
+
+            //services.AddControllers().AddJsonOptions(x =>
+            //    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             services.AddMicrosoftIdentityWebApiAuthentication(Configuration);
             services.Configure<OpenIdConnectOptions>(OpenIdConnectDefaults.AuthenticationScheme, options =>

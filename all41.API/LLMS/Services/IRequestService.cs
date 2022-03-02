@@ -8,5 +8,12 @@ namespace LLMS.Services
         IEnumerable<LearningLanguage> GetLearningLanguages();
         IEnumerable<LearningTarget> GetLearningTargets();
         IEnumerable<LearningSemester> GetLearningSemesters();
+
+        Request AddNewRequest(Request request, string requestorId);
+        Request SetApprovalStatus(int id, string value);
+
+
+        IEnumerable<Request> GetAllRequests();
+        IEnumerable<Request> GetAllUserRequests(string userId);
     }
 }

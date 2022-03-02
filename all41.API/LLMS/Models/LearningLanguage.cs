@@ -10,6 +10,6 @@ namespace LLMS.Models
         public int Id { get; set; }
         public string Language { get; set; }
 
-        public List<Request> ReaquestLanguage { get; set; }
+        //public List<Request> ReaquestLanguage { get; set; }
     }
 }
