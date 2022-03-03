@@ -1,13 +1,8 @@
 ﻿using LLMS.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+using LLMS.Services;
+using LLMS.viewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace LLMS.Controllers
 {
@@ -15,24 +10,42 @@ namespace LLMS.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        //[HttpPost]
-        //[Route("GetUser")]
-        //public IActionResult GetUserDetails()
-        //{
-        //    var userEmail = User.FindFirst("preferred_username")?.Value;
-        //    var userName = User.FindFirst("name")?.Value;
+        private readonly IUserService _service;
 
-        //    if (_userService.FindByNameAsync(userName) == null)
-        //    {
-        //        User user = new User
-        //        {
-        //            FullName = userEmail
-        //        };
-        //        _userService.CreateAsync(user);
-        //        _userService.AddToRoleAsync(user, "Coordinator");
+        public UserController(IUserService service)
+        {
+            _service = service;
+        }
 
-        //    }
-        //    return Ok("save");
-        //}
+        [HttpGet]
+        [Route("GetUsers")]
+        public IEnumerable<User>  GetUsers()
+        {
+            return _service.GetAllUsers();
+        }
+
+        [HttpPost]
+        [Route("AddUser")]
+        public IActionResult AddUser(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _service.GetById(model.UserId);
+                if (user == null)
+                {
+                    User newUser = new User()
+                    {
+                        UserId = model.UserId,
+                        UserName = model.UserName,
+                        UserEmail = model.UserEmail,
+                        UserRole = model.UserRole
+                    };
+                    var result = _service.SaveUser(newUser);
+                    return Ok(result);
+                }
+                return BadRequest("User exist");
+            }
+            return Ok();
+        }
     }
 }

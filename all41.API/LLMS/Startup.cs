@@ -27,6 +27,7 @@ namespace LLMS
         {
             services.AddDbContext<ApplicationDbContext>();
             services.AddTransient<IRequestService, RequestService>();
+            services.AddTransient<IUserService, UserService>();
 
             //services.AddControllers().AddJsonOptions(x =>
             //    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
@@ -56,7 +57,7 @@ namespace LLMS
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
+
             }
 
             app.UseHttpsRedirection();

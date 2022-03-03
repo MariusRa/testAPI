@@ -45,22 +45,30 @@ namespace LLMS.Controllers
         [Route("NewRequest")]
         public IActionResult NewRequest(RequestViewModel model)
         {
-            var userId = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier")?.Value;
-            Request request = new Request()
+            if (ModelState.IsValid)
             {
-                StudentName = model.StudentName,
-                StudentId = model.StudentId,
-                Language = model.Language,
-                CostCenter = model.CostCenter,
-                Target = model.Target,
-                Semester = model.Semester,
-                Comments = model.Comments,
-                Approval = model.Approval
-            };
-            var result = _service.AddNewRequest(request, userId);
-
-            return Ok(result);
+                var userId = User.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier")?.Value;
+                
+                Request request = new Request()
+                {
+                    StudentName = model.StudentName,
+                    StudentId = model.StudentId,
+                    Language = model.Language,
+                    CostCenter = model.CostCenter,
+                    Target = model.Target,
+                    Semester = model.Semester,
+                    Comments = model.Comments,
+                    Approval = model.Approval
+                };
+                
+                var result = _service.AddNewRequest(request, userId);
+                
+                return Ok(result);
+            }
+          
+            return Ok();
         }
+
 
         [HttpGet]
         [Route("Requests")]
