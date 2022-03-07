@@ -13,6 +13,8 @@ namespace LLMS.Services
         {
             _db = db;
         }
+
+       
         public IEnumerable<User> GetAllUsers()
         {
             return _db.Users.ToList();
@@ -29,6 +31,14 @@ namespace LLMS.Services
             _db.SaveChanges();
 
             return user;
+        }
+
+        public User DeleteUser(string userId)
+        {
+            var delUser = GetById(userId);
+            _db.Users.Remove(delUser);
+            _db.SaveChanges();
+            return delUser;
         }
     }
 }

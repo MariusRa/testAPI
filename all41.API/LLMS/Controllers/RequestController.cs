@@ -19,28 +19,6 @@ namespace LLMS.Controllers
         }
 
 
-        [HttpGet]
-        [Route("Language")]
-        public IEnumerable<LearningLanguage> GetLanguage()
-        {
-            return _service.GetLearningLanguages();
-        }
-
-        [HttpGet]
-        [Route("Target")]
-        public IEnumerable<LearningTarget> GetTarger()
-        {
-            return _service.GetLearningTargets();
-        }
-
-        [HttpGet]
-        [Route("Semester")]
-        public IEnumerable<LearningSemester> GetSemester()
-        {
-            return _service.GetLearningSemesters();
-        }
-
-
         [HttpPost]
         [Route("NewRequest")]
         public IActionResult NewRequest(RequestViewModel model)
@@ -52,6 +30,7 @@ namespace LLMS.Controllers
                 Request request = new Request()
                 {
                     StudentName = model.StudentName,
+                    StudentEmail = model.StudentEmail,
                     StudentId = model.StudentId,
                     Language = model.Language,
                     CostCenter = model.CostCenter,

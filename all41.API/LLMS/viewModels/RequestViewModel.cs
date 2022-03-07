@@ -10,6 +10,8 @@ namespace LLMS.viewModels
         [Required]
         public string StudentName { get; set; }
         [Required]
+        public string StudentEmail { get; set; }
+        [Required]
         public string StudentId { get; set; }
         [Required]
         public string Language { get; set; }

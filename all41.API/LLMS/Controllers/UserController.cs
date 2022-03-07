@@ -47,5 +47,19 @@ namespace LLMS.Controllers
             }
             return Ok();
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetUser(User user)
+        {
+            _service.GetById(user.UserId);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(string id)
+        {
+            _service.DeleteUser(id);
+            return Ok("User delete");
+        }
     }
 }

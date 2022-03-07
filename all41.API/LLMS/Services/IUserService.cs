@@ -9,5 +9,6 @@ namespace LLMS.Services
         IEnumerable<User> GetAllUsers();
         User GetById(string userId);
         User SaveUser(User user);
+        User DeleteUser(string userId);
     }
 }

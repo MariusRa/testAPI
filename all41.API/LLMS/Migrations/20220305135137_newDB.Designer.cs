@@ -9,61 +9,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LLMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220302151501_test4")]
-    partial class test4
+    [Migration("20220305135137_newDB")]
+    partial class newDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.12")
+                .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("LLMS.Models.LearningLanguage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Language")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LearningLanguages");
-                });
-
-            modelBuilder.Entity("LLMS.Models.LearningSemester", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Semester")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LearningSemesters");
-                });
-
-            modelBuilder.Entity("LLMS.Models.LearningTarget", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Target")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LearningTargets");
-                });
 
             modelBuilder.Entity("LLMS.Models.Request", b =>
                 {
@@ -88,6 +43,9 @@ namespace LLMS.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Semester")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentId")
@@ -117,9 +75,21 @@ namespace LLMS.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserRole")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "fd262146-b53c-47b3-afc2-6484643c68d1",
+                            UserEmail = "admin.test@kitm.lt",
+                            UserName = "Admin Akademija IT test",
+                            UserRole = "Coordinator"
+                        });
                 });
 
             modelBuilder.Entity("LLMS.Models.Request", b =>

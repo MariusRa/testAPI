@@ -16,21 +16,6 @@ namespace LLMS.Services
             _db = db;
         }
 
-        public IEnumerable<LearningLanguage> GetLearningLanguages()
-        {
-            return _db.LearningLanguages.ToList();  
-        }
-        
-        public IEnumerable<LearningSemester> GetLearningSemesters()
-        {
-            return _db.LearningSemesters.ToList();
-        }
-
-        public IEnumerable<LearningTarget> GetLearningTargets()
-        {
-            return _db.LearningTargets.ToList(); 
-        }
-
         public Request AddNewRequest(Request request, string requestorId)
         {
             request.Requestor = _db.Users.Where(r => r.UserId == requestorId).SingleOrDefault();
