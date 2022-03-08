@@ -8,6 +8,7 @@ namespace LLMS.DAL
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Request> Requests { get; set; }
+        public DbSet<Classroom> Classrooms { get; set; }
 
         public string DbPath { get; private set; }
 
@@ -16,19 +17,6 @@ namespace LLMS.DAL
         {
             options.UseSqlServer("Data Source=DESKTOP-QJFRKQB; Initial Catalog=DBLLMS; Integrated security=true;");
         }
-
-        //public ApplicationDbContext()
-        //{
-        //    var folder = Environment.SpecialFolder.LocalApplicationData;
-        //    var path = Environment.GetFolderPath(folder);
-        //    DbPath = System.IO.Path.Join(path, "TestLLMS.db");
-        //}
-
-        //// The following configures EF to create a Sqlite database file in the
-        //// special "local" folder for your platform.
-        //protected override void OnConfiguring(DbContextOptionsBuilder options)
-        //    => options.UseSqlite($"Data Source={DbPath}");
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

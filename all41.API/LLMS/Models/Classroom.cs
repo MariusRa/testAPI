@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace LLMS.Models
 {
-    public class LearningLanguage
+    public class Classroom
     {
-        public int Id { get; set; }
+        public int ClassroomId { get; set; }
         public string Language { get; set; }
+        public string LanguageLevel { get; set; }
 
-        //public List<Request> ReaquestLanguage { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

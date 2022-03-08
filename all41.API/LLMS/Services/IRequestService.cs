@@ -6,7 +6,7 @@ namespace LLMS.Services
     public interface IRequestService
     {
       
-        Request AddNewRequest(Request request, string requestorId);
+        Request AddNewRequest(Request request);
         Request SetApprovalStatus(int id, string value);
 
 

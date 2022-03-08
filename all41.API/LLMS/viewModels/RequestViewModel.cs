@@ -6,7 +6,7 @@ namespace LLMS.viewModels
     public class RequestViewModel
     {
         public int RequestId { get; set; }
-        public User Requestor { get; set; }
+        public string RequestorId { get; set; }
         [Required]
         public string StudentName { get; set; }
         [Required]

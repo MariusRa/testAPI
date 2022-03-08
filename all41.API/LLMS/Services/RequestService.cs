@@ -16,9 +16,9 @@ namespace LLMS.Services
             _db = db;
         }
 
-        public Request AddNewRequest(Request request, string requestorId)
+        public Request AddNewRequest(Request request)
         {
-            request.Requestor = _db.Users.Where(r => r.UserId == requestorId).SingleOrDefault();
+            //request.RequestorId = _db.Users.Where(r => r.UserId == requestorId).SingleOrDefault();
             _db.Requests.Add(request);
             _db.SaveChanges();
 
@@ -32,7 +32,7 @@ namespace LLMS.Services
 
         public IEnumerable<Request> GetAllUserRequests(string userId)
         {
-            return _db.Requests.Where(u => u.Requestor.UserId == userId).ToList();
+            return _db.Requests.Where(u => u.RequestorId == userId).ToList();
         }
 
         public Request SetApprovalStatus(int id, string value)

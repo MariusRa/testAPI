@@ -11,7 +11,7 @@ namespace LLMS.Models
         public string UserRole { get; set; }
 
 
-        [JsonIgnore]
-        public List<Request> UserRequests { get; set; }
+        //[JsonIgnore]
+        //public List<Request> UserRequests { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace LLMS.Models
     public class Request
     {
         public int RequestId { get; set; }
-        public User Requestor { get; set; }
+        public string RequestorId { get; set; }
 
         public string StudentName { get; set; }
         public string StudentEmail { get; set; }

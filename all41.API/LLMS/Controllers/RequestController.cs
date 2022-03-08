@@ -29,6 +29,7 @@ namespace LLMS.Controllers
                 
                 Request request = new Request()
                 {
+                    RequestorId = userId,
                     StudentName = model.StudentName,
                     StudentEmail = model.StudentEmail,
                     StudentId = model.StudentId,
@@ -40,7 +41,7 @@ namespace LLMS.Controllers
                     Approval = model.Approval
                 };
                 
-                var result = _service.AddNewRequest(request, userId);
+                var result = _service.AddNewRequest(request);
                 
                 return Ok(result);
             }
