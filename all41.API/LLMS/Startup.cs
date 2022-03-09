@@ -28,6 +28,7 @@ namespace LLMS
             services.AddDbContext<ApplicationDbContext>();
             services.AddTransient<IRequestService, RequestService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient < IClassroomService, ClassroomService>();
 
             //services.AddControllers().AddJsonOptions(x =>
             //    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using LLMS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LLMS.Models
+namespace LLMS.viewModels
 {
-    public class Classroom
+    public class ClassroomViewModel
     {
         public int ClassroomId { get; set; }
         public string Language { get; set; }

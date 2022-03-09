@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Nm2CnFZcaGc/ynX+IvqiTCjGzAbloj+gLWqcIo3oNB9ty1OitjZbM3Zr4c/4YJmowFgP+H3Zxu/yw0RB7Cx1Cg==",
+  "dgSpecHash": "botcVcXpHJRjuts2vNTAbxE4HOoxl6p+ccUxtec6Apmbp/EbiAx38MiCuV7TG4u038QKVt9exhSa9TA12bzjOQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Marius\\Desktop\\LMMSAPI\\all41.API\\LLMS\\LLMS.csproj",
   "expectedPackageFiles": [
@@ -43,12 +43,12 @@
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.13\\microsoft.entityframeworkcore.5.0.13.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.13\\microsoft.entityframeworkcore.abstractions.5.0.13.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.13\\microsoft.entityframeworkcore.analyzers.5.0.13.nupkg.sha512",
-    "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.13\\microsoft.entityframeworkcore.design.5.0.13.nupkg.sha512",
+    "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.12\\microsoft.entityframeworkcore.design.5.0.12.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.13\\microsoft.entityframeworkcore.relational.5.0.13.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\5.0.13\\microsoft.entityframeworkcore.sqlite.5.0.13.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\5.0.13\\microsoft.entityframeworkcore.sqlite.core.5.0.13.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.12\\microsoft.entityframeworkcore.sqlserver.5.0.12.nupkg.sha512",
-    "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.13\\microsoft.entityframeworkcore.tools.5.0.13.nupkg.sha512",
+    "C:\\Users\\Marius\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.12\\microsoft.entityframeworkcore.tools.5.0.12.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Marius\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",

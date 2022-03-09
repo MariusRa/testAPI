@@ -4,14 +4,16 @@ using LLMS.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LLMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220308193058_test4")]
+    partial class test4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +37,12 @@ namespace LLMS.Migrations
                     b.Property<string>("LanguageLevel")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("ClassroomId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Classrooms");
                 });
@@ -115,13 +122,20 @@ namespace LLMS.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LLMS.Models.Classroom", b =>
+                {
+                    b.HasOne("LLMS.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("LLMS.Models.User", b =>
                 {
-                    b.HasOne("LLMS.Models.Classroom", "Classroom")
+                    b.HasOne("LLMS.Models.Classroom", null)
                         .WithMany("Users")
                         .HasForeignKey("ClassroomId");
-
-                    b.Navigation("Classroom");
                 });
 
             modelBuilder.Entity("LLMS.Models.Classroom", b =>

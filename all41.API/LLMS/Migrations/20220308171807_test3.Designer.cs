@@ -4,14 +4,16 @@ using LLMS.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LLMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220308171807_test3")]
+    partial class test3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,11 +119,9 @@ namespace LLMS.Migrations
 
             modelBuilder.Entity("LLMS.Models.User", b =>
                 {
-                    b.HasOne("LLMS.Models.Classroom", "Classroom")
+                    b.HasOne("LLMS.Models.Classroom", null)
                         .WithMany("Users")
                         .HasForeignKey("ClassroomId");
-
-                    b.Navigation("Classroom");
                 });
 
             modelBuilder.Entity("LLMS.Models.Classroom", b =>
