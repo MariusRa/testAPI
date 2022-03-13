@@ -6,7 +6,9 @@ namespace LLMS.Services
     public interface IClassroomService
     {
         IEnumerable<Classroom> GetAllClassrooms();
-        Classroom GetClassById(int classId);
-        Classroom SaveClassroom(Classroom classroom);
+        Classroom GetClassById(string classId);
+        Classroom SaveClassroom(Classroom classroom, string userId);
+        Classroom SetActive(string id, bool value);
+        Classroom DeleteClass(string id);
     }
 }

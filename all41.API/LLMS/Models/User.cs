@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace LLMS.Models
 {
@@ -9,12 +8,10 @@ namespace LLMS.Models
         public string UserName { get; set; }
         public string UserEmail { get; set; }
         public string UserRole { get; set; }
-        
+
         [JsonIgnore]
         public Classroom Classroom { get; set; }
 
 
-        //[JsonIgnore]
-        //public List<Request> UserRequests { get; set; }
     }
 }
