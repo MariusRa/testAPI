@@ -21,7 +21,7 @@ namespace LLMS.viewModels
         public string Semester { get; set; }
         [Required]
         public string CostCenter { get; set; }
-        [Required]
+       
         public string Comments { get; set; }
         [Required]
         public string Approval { get; set; }

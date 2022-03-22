@@ -1,14 +1,15 @@
 ﻿using LLMS.Models;
 using LLMS.Services;
 using LLMS.viewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Security.Claims;
 
 namespace LLMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class RequestController : ControllerBase
     {
         private readonly IRequestService _service;
@@ -21,6 +22,7 @@ namespace LLMS.Controllers
 
         [HttpPost]
         [Route("NewRequest")]
+        [Authorize(Roles = "Coordinator, Requestor")]
         public IActionResult NewRequest(RequestViewModel model)
         {
             if (ModelState.IsValid)
@@ -43,10 +45,21 @@ namespace LLMS.Controllers
                 
                 var result = _service.AddNewRequest(request);
                 
-                return Ok(result);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound("Request exist");
+                }
+                
             }
-          
-            return Ok();
+            else
+            {
+                return NotFound("Model is not valid");
+            }
+               
         }
 
 
@@ -67,6 +80,7 @@ namespace LLMS.Controllers
 
         [HttpPut]
         [Route("NewRequest/{id}")]
+        //[Authorize(Roles = "Coordinator")]
         public IActionResult UpdateAprroval(int id, [FromBody] RequestViewModelApproval model)
         {
             return Ok(_service.SetApprovalStatus(id, model.Approval));

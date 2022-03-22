@@ -20,6 +20,7 @@ namespace LLMS.Services
         public IEnumerable<Classroom> GetAllClassrooms()
         {
             return _db.Classrooms.Include(u => u.Users).ToList();
+                
         }
 
         public Classroom GetClassById(string classId)
@@ -29,7 +30,7 @@ namespace LLMS.Services
 
         public Classroom SaveClassroom(Classroom classroom, string userId)
         {
-            var newClassroom = _db.Classrooms.FirstOrDefault(c => c.ClassroomId == classroom.ClassroomId);
+            var newClassroom = _db.Classrooms.Include(u => u.Users).FirstOrDefault(c => c.ClassroomId == classroom.ClassroomId);
 
             if(newClassroom == null)
             {

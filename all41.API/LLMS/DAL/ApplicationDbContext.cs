@@ -9,6 +9,7 @@ namespace LLMS.DAL
         public DbSet<User> Users { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<Classroom> Classrooms { get; set; }
+        
 
         public string DbPath { get; private set; }
 
@@ -21,7 +22,8 @@ namespace LLMS.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+         
+            
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
@@ -30,6 +32,14 @@ namespace LLMS.DAL
                     UserEmail = "admin.test@kitm.lt",
                     UserRole = "Coordinator"
                 });
+
+            modelBuilder.Entity<User>().HasMany(x => x.Classrooms)
+                .WithMany(x => x.Users)
+                .UsingEntity<ClassroomUser>(
+                    x => x.HasOne(x => x.Classroom)
+                    .WithMany().HasForeignKey(x => x.ClassroomId),
+                    x => x.HasOne(x => x.User)
+                   .WithMany().HasForeignKey(x => x.UserId));
         }
     }
 }

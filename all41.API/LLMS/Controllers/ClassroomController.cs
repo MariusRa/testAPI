@@ -1,6 +1,7 @@
 ﻿using LLMS.Models;
 using LLMS.Services;
 using LLMS.viewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -8,6 +9,7 @@ namespace LLMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class ClassroomController : ControllerBase
     {
         private readonly IClassroomService _service;
@@ -58,7 +60,7 @@ namespace LLMS.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateAprroval(string id, [FromBody] ClassroomViewModelApproval model)
         {
-            return Ok(_service.SetActive(id, model.IsActive));
+            return Ok( _service.SetActive(id, model.IsActive));
         }
 
         [HttpDelete("{id}")]

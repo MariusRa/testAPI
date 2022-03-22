@@ -19,10 +19,19 @@ namespace LLMS.Services
         public Request AddNewRequest(Request request)
         {
             //request.RequestorId = _db.Users.Where(r => r.UserId == requestorId).SingleOrDefault();
-            _db.Requests.Add(request);
-            _db.SaveChanges();
-
-            return request;
+            var newRequest = _db.Requests.FirstOrDefault(r => r.StudentEmail == request.StudentEmail && r.Language == request.Language && r.Semester == request.Semester);
+            
+            if (newRequest == null)
+            {
+              _db.Requests.Add(request);
+              _db.SaveChanges();
+              return (request);  
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
         public IEnumerable<Request> GetAllRequests()

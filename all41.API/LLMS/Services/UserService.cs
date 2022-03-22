@@ -1,5 +1,6 @@
 ﻿using LLMS.DAL;
 using LLMS.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace LLMS.Services
        
         public IEnumerable<User> GetAllUsers()
         {
-            return _db.Users.ToList();
+            return _db.Users.Include(c => c.Classrooms).ToList();
         }
 
         public User GetById(string userId)

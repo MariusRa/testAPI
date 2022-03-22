@@ -3,14 +3,16 @@ using LLMS.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LLMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220321152310_manyToMany")]
+    partial class manyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,21 +37,6 @@ namespace LLMS.Migrations
                     b.HasKey("ClassroomId");
 
                     b.ToTable("Classrooms");
-                });
-
-            modelBuilder.Entity("LLMS.Models.ClassroomUser", b =>
-                {
-                    b.Property<string>("ClassroomId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ClassroomId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ClassroomUser");
                 });
 
             modelBuilder.Entity("LLMS.Models.Request", b =>
@@ -122,16 +109,31 @@ namespace LLMS.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LLMS.Models.ClassroomUser", b =>
+            modelBuilder.Entity("LLMS.Models.UserClassroom", b =>
+                {
+                    b.Property<string>("ClassroomId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ClassroomId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserClassrooms");
+                });
+
+            modelBuilder.Entity("LLMS.Models.UserClassroom", b =>
                 {
                     b.HasOne("LLMS.Models.Classroom", "Classroom")
-                        .WithMany()
+                        .WithMany("UserClassrooms")
                         .HasForeignKey("ClassroomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("LLMS.Models.User", "User")
-                        .WithMany()
+                        .WithMany("UserClassrooms")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -139,6 +141,16 @@ namespace LLMS.Migrations
                     b.Navigation("Classroom");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("LLMS.Models.Classroom", b =>
+                {
+                    b.Navigation("UserClassrooms");
+                });
+
+            modelBuilder.Entity("LLMS.Models.User", b =>
+                {
+                    b.Navigation("UserClassrooms");
                 });
 #pragma warning restore 612, 618
         }
