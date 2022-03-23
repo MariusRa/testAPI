@@ -47,18 +47,16 @@ namespace LLMS.Controllers
                 
                 if (result != null)
                 {
-                    return Ok(result);
+                    return Ok();
                 }
                 else
                 {
-                    return NotFound("Request exist");
+                    return NotFound();
                 }
                 
             }
-            else
-            {
-                return NotFound("Model is not valid");
-            }
+
+            return Ok();
                
         }
 

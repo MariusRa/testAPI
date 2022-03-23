@@ -18,19 +18,29 @@ namespace LLMS.Services
 
         public Request AddNewRequest(Request request)
         {
-            //request.RequestorId = _db.Users.Where(r => r.UserId == requestorId).SingleOrDefault();
-            var newRequest = _db.Requests.FirstOrDefault(r => r.StudentEmail == request.StudentEmail && r.Language == request.Language && r.Semester == request.Semester);
+            var user = _db.Users.FirstOrDefault(u => u.UserId == request.StudentId);
             
-            if (newRequest == null)
+            if(user == null || user?.UserRole != "Requestor" && user?.UserRole != "Teacher" && user?.UserRole != "Coordinator")
             {
-              _db.Requests.Add(request);
-              _db.SaveChanges();
-              return (request);  
+                
+                var newRequest = _db.Requests.FirstOrDefault(r => r.StudentEmail == request.StudentEmail && r.Language == request.Language && r.Semester == request.Semester && r.Approval != "notApproved");
+            
+                if (newRequest == null)
+                {
+                    _db.Requests.Add(request);
+                    _db.SaveChanges();
+                    return (request);  
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
                 return null;
             }
+       
             
         }
 
