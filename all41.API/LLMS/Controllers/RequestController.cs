@@ -47,7 +47,7 @@ namespace LLMS.Controllers
                 
                 if (result != null)
                 {
-                    return Ok();
+                    return Ok(request);
                 }
                 else
                 {
