@@ -47,7 +47,7 @@ namespace LLMS.Controllers
                 
                 if (result != null)
                 {
-                    return Ok();
+                    return Ok(request);
                 }
                 else
                 {
@@ -63,6 +63,7 @@ namespace LLMS.Controllers
 
         [HttpGet]
         [Route("Requests")]
+        [Authorize(Roles = "Coordinator")]
         public IEnumerable<Request> GetRequests()
         {
             return _service.GetAllRequests();
@@ -78,7 +79,7 @@ namespace LLMS.Controllers
 
         [HttpPut]
         [Route("NewRequest/{id}")]
-        //[Authorize(Roles = "Coordinator")]
+        [Authorize(Roles = "Coordinator")]
         public IActionResult UpdateAprroval(int id, [FromBody] RequestViewModelApproval model)
         {
             return Ok(_service.SetApprovalStatus(id, model.Approval));

@@ -19,7 +19,7 @@ namespace LLMS.Services
 
         public IEnumerable<Classroom> GetAllClassrooms()
         {
-            return _db.Classrooms.Include(u => u.Users).ToList();
+            return _db.Classrooms.Include(u => u.Users).OrderByDescending(c => c.IsActive).ToList();
                 
         }
 

@@ -1,6 +1,7 @@
 ﻿using LLMS.Models;
 using LLMS.Services;
 using LLMS.viewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -8,6 +9,7 @@ namespace LLMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Coordinator")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
@@ -19,6 +21,7 @@ namespace LLMS.Controllers
 
         [HttpGet]
         [Route("GetUsers")]
+        [Authorize(Roles = "Coordinator")]
         public IEnumerable<User>  GetUsers()
         {
             return _service.GetAllUsers();

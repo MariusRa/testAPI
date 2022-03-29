@@ -9,7 +9,7 @@ namespace LLMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [Authorize(Roles = "Coordinator")]
     public class ClassroomController : ControllerBase
     {
         private readonly IClassroomService _service;

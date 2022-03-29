@@ -1,9 +1,7 @@
 ﻿using LLMS.DAL;
 using LLMS.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 
 namespace LLMS.Services
 {
@@ -29,7 +27,7 @@ namespace LLMS.Services
                 {
                     _db.Requests.Add(request);
                     _db.SaveChanges();
-                    return (request);  
+                    return request;  
                 }
                 else
                 {
@@ -46,7 +44,7 @@ namespace LLMS.Services
 
         public IEnumerable<Request> GetAllRequests()
         {
-            return _db.Requests.ToList();
+            return _db.Requests.OrderByDescending(r => r.Approval).ToList();
         }
 
         public IEnumerable<Request> GetAllUserRequests(string userId)
